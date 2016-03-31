@@ -1,7 +1,4 @@
 package com.handsome.frame.android.utils.encrypt;
-
-import android.util.Base64;
-
 import java.security.Key;
 
 import javax.crypto.Cipher;
