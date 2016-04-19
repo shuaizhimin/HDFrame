@@ -28,7 +28,7 @@ import java.util.concurrent.BlockingQueue;
  *
  * Requests added to the specified queue are processed from the network via a
  * specified {@link Network} interf. Responses are committed to cache, if
- * eligible, using a specified {@link com.eve.volley.cache.DiskCache} interf.
+ * eligible, using a specified {@link} interf.
  * Valid responses and errors are posted back to the caller via a {@link Delivery}.
  */
 @SuppressWarnings("rawtypes")

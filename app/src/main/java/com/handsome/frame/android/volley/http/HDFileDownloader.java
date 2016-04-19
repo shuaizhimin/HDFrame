@@ -17,7 +17,7 @@ public class HDFileDownloader extends FileDownloader {
     public HDFileDownloader(RequestQueue queue, int parallelTaskCount) {
         super(queue, parallelTaskCount);
     }
-    public static DownloadController load(String storeFilePath, String url, HandsomeFileDownloaderListener<Void> listener) {
+    public static DownloadController load(String storeFilePath, String url, HDFileDownloaderListener<Void> listener) {
         mController = HandsomeApplication.getFileDownloader().add(storeFilePath, url, listener);
         return mController;
     }

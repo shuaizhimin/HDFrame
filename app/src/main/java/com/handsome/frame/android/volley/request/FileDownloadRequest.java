@@ -34,7 +34,7 @@ import java.util.zip.GZIPInputStream;
  * that will fill up your thread poll as soon as possible if you launch many request,
  * if all threads is busy, the high priority request such as {@link StringRequest}
  * might waiting long time, so don't use it alone.
- * we highly recommend you to use it with the {@link com.eve.volley.toolbox.FileDownloader},
+ * we highly recommend you to use it with the {@link },
  * FileDownloader maintain a download task queue, let's set the maximum parallel request count, the rest will await.
  *
  * By the way, this request priority was {@link Priority#LOW}, higher request will jump ahead it.

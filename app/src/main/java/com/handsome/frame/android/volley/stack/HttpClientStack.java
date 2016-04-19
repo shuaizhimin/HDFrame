@@ -18,9 +18,8 @@ package com.handsome.frame.android.volley.stack;
 
 import android.net.http.AndroidHttpClient;
 
-import com.handsome.android.frame.volley.AuthFailureError;
-import com.handsome.android.frame.volley.Request;
-import com.handsome.android.frame.volley.Request.Method;
+import com.handsome.frame.android.volley.AuthFailureError;
+import com.handsome.frame.android.volley.Request;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -95,29 +94,29 @@ public class HttpClientStack implements HttpStack {
      */
 	private static HttpUriRequest createHttpRequest(Request<?> request) throws AuthFailureError {
         switch (request.getMethod()) {
-            case Method.GET:
+            case Request.Method.GET:
                 return new HttpGet(request.getUrl());
-            case Method.DELETE:
+            case Request.Method.DELETE:
                 return new HttpDelete(request.getUrl());
-            case Method.POST: {
+            case Request.Method.POST: {
                 HttpPost postRequest = new HttpPost(request.getUrl());
                 postRequest.addHeader(HTTP.CONTENT_TYPE, request.getBodyContentType());
                 setEntityIfNonEmptyBody(postRequest, request);
                 return postRequest;
             }
-            case Method.PUT: {
+            case Request.Method.PUT: {
                 HttpPut putRequest = new HttpPut(request.getUrl());
                 putRequest.addHeader(HTTP.CONTENT_TYPE, request.getBodyContentType());
                 setEntityIfNonEmptyBody(putRequest, request);
                 return putRequest;
             }
-            case Method.HEAD:
+            case Request.Method.HEAD:
                 return new HttpHead(request.getUrl());
-            case Method.OPTIONS:
+            case Request.Method.OPTIONS:
                 return new HttpOptions(request.getUrl());
-            case Method.TRACE:
+            case Request.Method.TRACE:
                 return new HttpTrace(request.getUrl());
-            case Method.PATCH: {
+            case Request.Method.PATCH: {
                 HttpPatch patchRequest = new HttpPatch(request.getUrl());
                 patchRequest.addHeader(HTTP.CONTENT_TYPE, request.getBodyContentType());
                 setEntityIfNonEmptyBody(patchRequest, request);
