@@ -1,13 +1,8 @@
 package com.handsome.frame.android.permission;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 
-import com.handsome.frame.android.R;
 import com.handsome.frame.android.permission.impl.PermissionImpl;
 import com.handsome.frame.android.permission.impl.PermissionRequestCode;
 import com.handsome.frame.android.utils.log.HDLog;

@@ -1,7 +1,6 @@
 package com.handsome.frame.android.test;
 import android.Manifest;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.handsome.frame.android.R;
@@ -33,11 +32,11 @@ public class PermissionTestActivity extends HDBaseActivity {
         });
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        HDLog.e(TAG,"onRequestPermissionsResult");
-        control.onRequestPermissionsResult(requestCode,permissions,grantResults);
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        HDLog.e(TAG,"onRequestPermissionsResult");
+//        control.onRequestPermissionsResult(requestCode,permissions,grantResults);
+//    }
 
 }

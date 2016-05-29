@@ -14,12 +14,14 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".HandsomeActivity"></activity>
-        <activity android:name=".test.TextViewActivity">
+        >
+        <activity android:name=".HandsomeActivity" />
+        <activity android:name=".test.TextViewActivity"></activity>
+        <activity android:name=".test.PermissionTestActivity">
 
         </activity>
-        <activity android:name=".test.PermissionTestActivity">
+        <activity android:name=".test.SingleInstanceActivity"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

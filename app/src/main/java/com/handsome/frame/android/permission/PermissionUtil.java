@@ -4,9 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-
 import com.handsome.frame.android.utils.log.HDLog;
 
 /**
@@ -20,7 +17,7 @@ public class PermissionUtil {
     public static String TAG="PermissionUtil";
     public static boolean hasPermissions(Context context, String... permissions) {
         HDLog.e(TAG,""+Build.VERSION.SDK_INT);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >=23) {
             for (String permission : permissions) {
                 if (!hasSelfPermission(context, permission)) {
                     return false;
@@ -31,11 +28,12 @@ public class PermissionUtil {
     }
 
     private static boolean hasSelfPermission(Context context, String permission) {
-        try {
-            return ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED;
-        } catch (RuntimeException t) {
-            return false;
-        }
+//        try {
+//            return ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED;
+//        } catch (RuntimeException t) {
+//            return false;
+//        }
+        return false;
     }
 
     /**
@@ -56,7 +54,7 @@ public class PermissionUtil {
     }
 
     public static void requestPermission(Activity activity, String[] permissions, int requestCode) {
-        ActivityCompat.requestPermissions(activity, permissions, requestCode);
+        //ActivityCompat.requestPermissions(activity, permissions, requestCode);
     }
 
     /**
@@ -66,11 +64,11 @@ public class PermissionUtil {
      * @return
      */
     public static boolean shouldShowRequestPermissionRationale(Activity activity, String... permissions) {
-        for (String permission : permissions) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
-                return true;
-            }
-        }
+//        for (String permission : permissions) {
+//            if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
+//                return true;
+//            }
+//        }
         return false;
     }
 

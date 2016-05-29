@@ -1,28 +1,59 @@
-apply plugin: 'com.android.application'
-
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+apply plugin: 'signing'
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 17
+    buildToolsVersion '23.0.1'
 
     defaultConfig {
-        applicationId "com.handsome.frame.android"
-        minSdkVersion 15
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion 8
     }
+
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
+    }
+    lintOptions {
+        abortOnError false
     }
 }
 
+
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile '3rdparty:com.urlimageloader:1.9.5'
-    compile files('libs/dazzle-util-2.1-SNAPSHOT.jar')
-    compile 'com.android.support:support-v4:23.3.0'
-    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'android:com.android.support.v4:22.0'
+    compile '3rdparty:com.alibaba.fastjson:1.2.5'
+    compile '3rdparty:net.sourceforge.pinyin4j:1.0'
+    compile '3rdparty:com.android.handsome.debug.viewer:1.0'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
+}
+
+signing {
+    required { has("release") && gradle.taskGraph.hasTask("uploadArchives") }
+    sign configurations.archives
+}
+
+uploadArchives {
+    configuration = configurations.archives
+    repositories.mavenDeployer {
+        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+        repository(url: 'http://www.handsomeshuai.com:8081/nexus/content/repositories/handsome/') {
+//仓库地址
+            authentication(userName: "admin",//用户名
+                    password: "admin123")//密码
+        }
+
+        pom.project {
+            name 'juude-library'
+            packaging 'aar'
+            description '增加一些工具类'
+            url 'http://www.handsomeshuai.com:8081/nexus/content/repositories/handsome/'//仓库地址
+            groupId "handsome"
+            artifactId "com.handsome.android" //LibA
+            version 2.7
+        }
+    }
 }

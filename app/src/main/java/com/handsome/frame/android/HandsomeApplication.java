@@ -16,6 +16,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.utils.StorageUtils;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 import org.apache.http.protocol.HTTP;
 
@@ -82,6 +84,18 @@ public class HandsomeApplication extends Application{
      * 文件下载工具
      */
     private static HDFileDownloader mDownloader;
+    /**LeakCanary watcher**/
+    private RefWatcher refWatcher;
+    //在自己的Application中添加如下代码
+    public static RefWatcher getRefWatcher(Context context) {
+        HandsomeApplication application = (HandsomeApplication) context
+                .getApplicationContext();
+        return application.refWatcher;
+    }
+
+
+
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -95,6 +109,8 @@ public class HandsomeApplication extends Application{
         mQueue = new RequestQueue(network, THREADPOOLSIZE,new DiskCache(mCacheFile, FILECACHESIZE));
         // start and waiting requests.
         mQueue.start();
+
+        refWatcher= LeakCanary.install(this);
     }
 
     public static String getCookies(){
