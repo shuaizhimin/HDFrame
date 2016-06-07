@@ -3,6 +3,7 @@ package com.handsome.frame.android;
 import android.app.Activity;
 import android.os.Bundle;
 import com.android.debug.hv.ViewServer;
+import com.handsome.frame.android.base.HDBaseActivity;
 import com.handsome.frame.android.utils.log.HDLog;
 import com.handsome.frame.android.utils.toast.HDToast;
 import com.handsome.frame.android.volley.NetroidError;
@@ -13,7 +14,7 @@ import com.handsome.frame.android.volley.TimeoutError;
 import com.handsome.frame.android.volley.http.HandleRequestError;
 import com.squareup.leakcanary.RefWatcher;
 
-public class HandsomeActivity extends Activity {
+public class HandsomeActivity extends HDBaseActivity {
     private HandleRequestError handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
